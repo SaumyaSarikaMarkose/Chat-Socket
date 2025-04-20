@@ -1,0 +1,129 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 1,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-04-20T01:32:46.733Z",
+    "end": "2025-04-20T01:32:49.234Z",
+    "duration": 2501,
+    "testsRegistered": 2,
+    "passPercent": 50,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "6b7f3474-a150-4f2a-b7c4-0ae9d37a88fa",
+      "title": "",
+      "fullFile": "cypress\\e2e\\privatechat.cy.js",
+      "file": "cypress\\e2e\\privatechat.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "73fd8566-0e00-413b-9a9d-be0da6f771a5",
+          "title": "Private Chat Functionality",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should switch to private chat and send a message",
+              "fullTitle": "Private Chat Functionality should switch to private chat and send a message",
+              "timedOut": null,
+              "duration": 1621,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const privateUser = 'winter';\nconst message = 'Hello from Cypress in private chat!';\n// Wait for user list and click on the private chat user\ncy.contains(privateUser).click();\n// Type and send private message\ncy.get('textarea').type(message); // or use [data-cy=\"message-input\"] if you added it\ncy.get('button').contains('Send').click();\n// Confirm message appears in chat\ncy.contains(message).should('exist');",
+              "err": {},
+              "uuid": "c4e41f85-3d1b-4a53-a75a-46757c63d52a",
+              "parentUUID": "73fd8566-0e00-413b-9a9d-be0da6f771a5",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should upload a file in private chat and display its name",
+              "fullTitle": "Private Chat Functionality should upload a file in private chat and display its name",
+              "timedOut": null,
+              "duration": 813,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const privateUser = 'summer'; // same user from list\nconst fileName = 'testFile.txt';\n// Select the private chat user\ncy.contains(privateUser).click();\n// Load file and upload\ncy.fixture(fileName).then(fileContent => {\n  cy.get('input[type=\"file\"]').selectFile({\n    contents: Cypress.Blob.binaryStringToBlob(fileContent),\n    fileName,\n    mimeType: 'text/plain',\n    lastModified: Date.now()\n  });\n  // Verify that the uploaded file name appears\n  cy.contains(fileName).should('exist');\n});",
+              "err": {
+                "message": "Error: A fixture file could not be found at any of the following paths:\n\n    > cypress\\fixtures\\testFile.txt\n    > cypress\\fixtures\\testFile.txt.[ext]\n\nCypress looked for these file extensions at the provided path:\n\n    > .json, .js, .coffee, .html, .txt, .csv, .png, .jpg, .jpeg, .gif, .tif, .tiff, .zip\n\nProvide a path to an existing fixture file.",
+                "estack": "Error: A fixture file could not be found at any of the following paths:\n\n    > cypress\\fixtures\\testFile.txt\n    > cypress\\fixtures\\testFile.txt.[ext]\n\nCypress looked for these file extensions at the provided path:\n\n    > .json, .js, .coffee, .html, .txt, .csv, .png, .jpg, .jpeg, .gif, .tif, .tiff, .zip\n\nProvide a path to an existing fixture file.\n    at Object.<anonymous> (<embedded>:2770:265032)\n    at Object.tryCatcher (C:\\Users\\SOUMYA\\AppData\\Local\\Cypress\\Cache\\14.3.1\\Cypress\\resources\\app\\node_modules\\bluebird\\js\\release\\util.js:16:23)\n    at Promise._settlePromiseFromHandler (C:\\Users\\SOUMYA\\AppData\\Local\\Cypress\\Cache\\14.3.1\\Cypress\\resources\\app\\node_modules\\bluebird\\js\\release\\promise.js:512:31)\n    at Promise._settlePromise (C:\\Users\\SOUMYA\\AppData\\Local\\Cypress\\Cache\\14.3.1\\Cypress\\resources\\app\\node_modules\\bluebird\\js\\release\\promise.js:569:18)\n    at Promise._settlePromise0 (C:\\Users\\SOUMYA\\AppData\\Local\\Cypress\\Cache\\14.3.1\\Cypress\\resources\\app\\node_modules\\bluebird\\js\\release\\promise.js:614:10)\n    at Promise._settlePromises (C:\\Users\\SOUMYA\\AppData\\Local\\Cypress\\Cache\\14.3.1\\Cypress\\resources\\app\\node_modules\\bluebird\\js\\release\\promise.js:694:18)\n    at Promise._fulfill (C:\\Users\\SOUMYA\\AppData\\Local\\Cypress\\Cache\\14.3.1\\Cypress\\resources\\app\\node_modules\\bluebird\\js\\release\\promise.js:638:18)\n    at <unknown> (C:\\Users\\SOUMYA\\AppData\\Local\\Cypress\\Cache\\14.3.1\\Cypress\\resources\\app\\node_modules\\bluebird\\js\\release\\nodeback.js:42:21)\n    at s (<embedded>:227:141897)\n    at D.<anonymous> (<embedded>:2764:159813)\n    at D.emit (node:events:518:28)\n    at D._finish (<embedded>:2764:160743)\n    at i (<embedded>:2764:160134)\n    at D._processSimple2 (<embedded>:2764:165900)\n    at <unknown> (<embedded>:2764:165753)\n    at D._stat2 (<embedded>:2764:166818)\n    at <unknown> (<embedded>:2764:166665)\n    at s (<embedded>:1067:24225)\n    at s (<embedded>:227:141897)\n    at r (<embedded>:2886:13639)\n    at FSReqCallback.oncomplete (node:fs:197:21)",
+                "diff": null
+              },
+              "uuid": "79b5a6ee-3629-4570-8542-ad6ce2ad76d1",
+              "parentUUID": "73fd8566-0e00-413b-9a9d-be0da6f771a5",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "c4e41f85-3d1b-4a53-a75a-46757c63d52a"
+          ],
+          "failures": [
+            "79b5a6ee-3629-4570-8542-ad6ce2ad76d1"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 2434,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

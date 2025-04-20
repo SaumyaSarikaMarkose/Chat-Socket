@@ -1,0 +1,52 @@
+<div class="register-container">
+    <div class="image-container">
+      <img src="../../../../assets/init-icon.png" alt="Register Image" class="register-image" />
+    </div>
+    
+    <div class="form-container">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
+        <h2>Create Account</h2>
+  
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" formControlName="name" />
+          <div *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched" class="error">
+            Name is required.
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" formControlName="email" />
+          <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="error">
+            Enter a valid email.
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" formControlName="password" />
+          <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="error">
+            Password is required.
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="role">Role:</label>
+          <select formControlName="role" id="role">
+            <option value="admin">Admin</option>
+            <option value="user">User</option>
+          </select>
+        </div>
+  
+        <div class="form-group">
+          <button type="submit" [disabled]="registerForm.invalid" class="submit-btn">Register</button>
+        </div>
+      </form>
+  
+      <div class="login-link">
+        <p>Already registered? <a routerLink="/login">Login here</a></p>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,69 @@
+
+<div class="chat-container">
+
+  <div class="user-list">
+    <h2>Welcome, {{ currentUser }}</h2>
+    <button class="log-out" (click)="logout()">Logout</button>
+    <button class="log-out" (click)="adminDashboard()">Dashboard</button>
+    <h3>Chat With:</h3>
+    <ul>
+      <li 
+        [class.selected]="selectedChatUser === 'group'"
+        (click)="selectedChatUser = 'group'">
+        Group Chat
+      </li>
+      <li *ngFor="let user of users" 
+          [class.selected]="selectedChatUser === user"
+          (click)="selectedChatUser = user"
+          [class.disabled]="user === currentUser">
+        {{ user }}
+      </li>
+    </ul>
+  </div>
+
+
+  <div class="chat-area">
+    <div class="chat-header">
+      <h3>Chatting with: {{ selectedChatUser }}</h3>
+    </div>
+
+    <div class="message-list " *ngFor="let msg of messages" class="message">
+      <div *ngIf="msg.text">
+        <b>{{ msg.from }}:</b> {{ msg.text }}
+      </div>
+    
+      <div *ngIf="msg.file">
+        <b>{{ msg.from }}:</b><br />
+  
+        <img 
+          *ngIf="msg.fileType?.startsWith('image/')" 
+          [src]="msg.file" 
+          style="max-width: 200px; max-height: 200px;" 
+        />
+    
+        <a 
+          *ngIf="!msg.fileType?.startsWith('image/')" 
+          [href]="msg.file" 
+          [download]="msg.fileName"
+          target="_blank"
+        >
+          📎 {{ msg.fileName }} (Download)
+        </a>
+      </div>
+    </div>
+    
+    
+    <div class="chat-input">
+      <input class="input-field" [(ngModel)]="message" placeholder="Type..." (keydown.enter)="sendMessage()" />
+      <input type="file" id="fileUpload" (change)="onFileSelected($event)" hidden />
+      <label for="fileUpload" class="sent-image icon-button">📎</label>
+      <span class="sent-image" (click)="sendMessage()">➤</span>
+    </div>
+
+    <!-- <textarea [(ngModel)]="message" data-cy="message-input"></textarea>
+    <input type="file" (change)="onFileSelected($event)" data-cy="file-input" />
+    <button (click)="sendMessage()" data-cy="send-button">Send</button> -->
+
+    
+  </div>
+</div>

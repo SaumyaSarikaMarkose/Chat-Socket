@@ -1,0 +1,73 @@
+/* You can add global styles to this file, and also import other style files */
+/* Toast container */
+.toast-container {
+    max-width: 300px !important;
+    margin: auto !important;
+  }
+  
+  /* General toast styling */
+  .toast {
+    width: 100% !important;
+    text-align: center !important;
+    padding: 16px 24px !important;
+    border-radius: 10px !important;
+    font-size: 15px !important;
+    font-weight: 500;
+    line-height: 1.5;
+    position: relative;
+  }
+  
+  /* Close button styling */
+  .toast-close-button {
+    position: absolute !important;
+    top: 5px !important;
+    right: 8px !important;
+    color: red !important;
+    font-weight: bold;
+    font-size: 18px;
+    opacity: 1 !important;
+  }
+  
+  /* Hover effect for close button */
+  .toast-close-button:hover {
+    color: darkred !important;
+    opacity: 1 !important;
+  }
+  
+  /* Toast type styling */
+  .toast-success {
+    background-color: darkred !important;
+    color: #fff !important;
+    padding: 20px;
+    font-size: 20px;
+  }
+  
+  .toast-error {
+    background-color: #dc3545 !important;
+    color: #fff !important;
+  }
+  
+  .toast-info {
+    background-color: #17a2b8 !important;
+    color: #fff !important;
+  }
+  
+  .toast-warning {
+    background-color: #ffc107 !important;
+    color: #212529 !important;
+  }
+  /* Make sure the toast container is above everything */
+.toast-top-center {
+    top: 20px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 9999 !important; /* Keep it above login form */
+    position: fixed !important;
+    width: 500px;
+  }
+  /* styles.css or styles.scss */
+.error-snackbar {
+  background-color: #363534; /* Red background for error */
+  color: white;
+  height: 70px;
+}

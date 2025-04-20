@@ -1,0 +1,124 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-04-20T01:40:47.726Z",
+    "end": "2025-04-20T01:40:50.344Z",
+    "duration": 2618,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "0bb94a9a-f70a-45f1-8e03-0a7d2babab68",
+      "title": "",
+      "fullFile": "cypress\\e2e\\privatechat.cy.js",
+      "file": "cypress\\e2e\\privatechat.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "7e8a99c5-87b9-4571-ab1e-e55b4869f1b0",
+          "title": "Private Chat Functionality",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should switch to private chat and send a message",
+              "fullTitle": "Private Chat Functionality should switch to private chat and send a message",
+              "timedOut": null,
+              "duration": 1960,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const privateUser = 'winter';\nconst message = 'Hello from Cypress in private chat!';\n// Wait for user list and click on the private chat user\ncy.contains(privateUser).click();\n// Type and send private message\ncy.get('textarea').type(message);\ncy.get('button').contains('Send').click();\n// Confirm message appears in chat\ncy.contains(message).should('exist');",
+              "err": {},
+              "uuid": "b9df9b92-f78c-4b72-884f-40c925c0cd1f",
+              "parentUUID": "7e8a99c5-87b9-4571-ab1e-e55b4869f1b0",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should upload a file in private chat and display its name",
+              "fullTitle": "Private Chat Functionality should upload a file in private chat and display its name",
+              "timedOut": null,
+              "duration": 571,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const privateUser = 'summer';\nconst fileName = 'testFile.txt';\n// Select the private chat user\ncy.contains(privateUser).click();\n// Load file and upload\ncy.fixture(fileName).then(fileContent => {\n  cy.get('input[type=\"file\"]').selectFile({\n    contents: Cypress.Blob.binaryStringToBlob(fileContent),\n    fileName,\n    mimeType: 'text/plain',\n    lastModified: Date.now()\n  });\n  // Verify that the uploaded file name appears\n  cy.contains(fileName).should('exist');\n});",
+              "err": {},
+              "uuid": "0170b4ed-3dcf-4b68-877b-3f5be77435fb",
+              "parentUUID": "7e8a99c5-87b9-4571-ab1e-e55b4869f1b0",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "b9df9b92-f78c-4b72-884f-40c925c0cd1f",
+            "0170b4ed-3dcf-4b68-877b-3f5be77435fb"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2531,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
