@@ -10,3 +10,8 @@
 2.FRONTEND INTEGRATION
 1.1. npm install - this will install all the dependencies required
 1.2 npm start - this will start the angular application
+
+HOW TO USE THE APPLICATION
+
+1.Please registr in the application by going to the register page
+2.create 2,3 users and login in Using different browser tabs or incognito windows to simulate multiple users logged in at the same time.
